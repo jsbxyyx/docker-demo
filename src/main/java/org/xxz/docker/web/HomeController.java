@@ -1,5 +1,7 @@
 package org.xxz.docker.web;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -9,12 +11,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HomeController {
     
+    private static final String USER_DIR = System.getProperty("user.dir");
+    
     @RequestMapping("/createFile")
     public String createFile() {
-        final String userDir = System.getProperty("user.dir");
         FileWriter fw = null; 
         try {
-            fw = new FileWriter(userDir + "/blog");
+            fw = new FileWriter(USER_DIR + "/blog");
             fw.write("blog");
             fw.flush();
         } catch (Exception e) {
@@ -26,12 +29,31 @@ public class HomeController {
                 e.printStackTrace();
             }
         }
-        return userDir;
+        return USER_DIR;
     }
     
-    @RequestMapping("/index")
+    @RequestMapping("/readFile")
+    public String readFile() {
+        String line = null;
+        BufferedReader br = null;
+        try {
+            br = new BufferedReader(new FileReader(USER_DIR + "/blog"));
+            line = br.readLine();
+        } catch (Exception e) {
+            return e.toString();
+        } finally {
+            try {
+                br.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return line;
+    }
+    
+    @RequestMapping(value = {"", "/", "/index"})
     public String index() {
-        return "hello";
+        return USER_DIR;
     }
 
 }
