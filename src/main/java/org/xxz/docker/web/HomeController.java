@@ -15,7 +15,6 @@ public class HomeController {
     private static final String USER_HOME = System.getProperty("user.home");
     private static final String USR_LOCAL = "/usr/local";
     private static final String OPT = "/opt";
-    
     private static final String CUR = OPT;
     
     @RequestMapping("/writeFile")
