@@ -28,5 +28,10 @@ public class HomeController {
         }
         return userDir;
     }
+    
+    @RequestMapping("/index")
+    public String index() {
+        return "hello";
+    }
 
 }
