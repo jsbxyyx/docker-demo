@@ -22,7 +22,7 @@ public class HttpServer {
 	
 	private int port = 8080;
 	
-	@PostConstruct
+	//@PostConstruct
 	private void run() {
 		EventLoopGroup bossGroup = new NioEventLoopGroup();
 		EventLoopGroup workerGroup = new NioEventLoopGroup();
