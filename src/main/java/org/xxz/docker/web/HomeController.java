@@ -13,18 +13,19 @@ public class HomeController {
     
     private static final String USER_DIR = System.getProperty("user.dir");
     
-    @RequestMapping("/createFile")
+    @RequestMapping("/writeFile")
     public String createFile() {
         FileWriter fw = null; 
         try {
-            fw = new FileWriter(USER_DIR + "/blog");
+            fw = new FileWriter("~/blog");
             fw.write("blog");
             fw.flush();
         } catch (Exception e) {
             return e.toString();
         } finally {
             try {
-                fw.close();
+                if (fw != null)
+                    fw.close();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -37,13 +38,14 @@ public class HomeController {
         String line = null;
         BufferedReader br = null;
         try {
-            br = new BufferedReader(new FileReader(USER_DIR + "/blog"));
+            br = new BufferedReader(new FileReader("~/blog"));
             line = br.readLine();
         } catch (Exception e) {
             return e.toString();
         } finally {
             try {
-                br.close();
+                if (br != null)
+                    br.close();
             } catch (IOException e) {
                 e.printStackTrace();
             }
