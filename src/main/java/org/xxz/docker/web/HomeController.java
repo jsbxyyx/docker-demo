@@ -15,14 +15,14 @@ public class HomeController {
     private static final String USER_HOME = System.getProperty("user.home");
     private static final String USR_LOCAL = "/usr/local";
     private static final String OPT = "/opt";
-    
-    private static final String CUR = OPT;
+    private static final String CUR = USER_HOME;
+    private static final String FILE = "/.blog";
     
     @RequestMapping("/writeFile")
     public String createFile() {
         FileWriter fw = null; 
         try {
-            fw = new FileWriter(CUR + "/blog");
+            fw = new FileWriter(CUR + FILE);
             fw.write("blog");
             fw.flush();
         } catch (Exception e) {
@@ -43,7 +43,7 @@ public class HomeController {
         String line = null;
         BufferedReader br = null;
         try {
-            br = new BufferedReader(new FileReader(CUR + "/blog"));
+            br = new BufferedReader(new FileReader(CUR + FILE));
             line = br.readLine();
         } catch (Exception e) {
             return e.toString();
