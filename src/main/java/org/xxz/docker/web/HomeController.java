@@ -56,7 +56,7 @@ public class HomeController {
     
     @RequestMapping(value = {"", "/", "/index"})
     public String index() {
-        return USER_DIR + " " + USER_HOME;
+        return USER_DIR + "|" + USER_HOME;
     }
 
 }
