@@ -17,7 +17,7 @@ public class HomeController {
     public String createFile() {
         FileWriter fw = null; 
         try {
-            fw = new FileWriter(USER_DIR + "/blog");
+            fw = new FileWriter("/blog");
             fw.write("blog");
             fw.flush();
         } catch (Exception e) {
@@ -37,7 +37,7 @@ public class HomeController {
         String line = null;
         BufferedReader br = null;
         try {
-            br = new BufferedReader(new FileReader(USER_DIR + "/blog"));
+            br = new BufferedReader(new FileReader("/blog"));
             line = br.readLine();
         } catch (Exception e) {
             return e.toString();
