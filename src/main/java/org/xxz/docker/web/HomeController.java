@@ -60,7 +60,7 @@ public class HomeController {
     
     @RequestMapping(value = {"", "/", "/index"})
     public String index() {
-        return "hello heroku";
+        return "hello heroku ";
     }
 
 }
