@@ -15,7 +15,8 @@ public class HomeController {
     private static final String USER_HOME = System.getProperty("user.home");
     private static final String USR_LOCAL = "/usr/local";
     private static final String OPT = "/opt";
-    private static final String CUR = USER_HOME;
+    private static final String TMP = "/tmp";
+    private static final String CUR = TMP;
     private static final String FILE = "/.blog";
     
     @RequestMapping("/writeFile")
@@ -60,7 +61,7 @@ public class HomeController {
     
     @RequestMapping(value = {"", "/", "/index"})
     public String index() {
-        return "hello heroku";
+        return "hello heroku ";
     }
 
 }
